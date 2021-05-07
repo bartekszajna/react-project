@@ -1,0 +1,139 @@
+@import 'reset';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  width: 40%;
+  margin: 0 auto;
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  );
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 3rem;
+}
+
+.toolbar {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addtask_form {
+  position: relative;
+  height: 3rem;
+  flex-grow: 4;
+}
+
+.form_input {
+  border: none;
+  height: 100%;
+  width: calc(100% - 4rem);
+  font-size: 1.2rem;
+  color: #c13584;
+  outline: none;
+  padding-left: 1rem;
+  border: none;
+  font-family: 'Lato';
+  font-weight: bold;
+}
+
+.submit_button {
+  width: 3rem;
+  height: 100%;
+  outline: none;
+  border: none;
+  position: absolute;
+  background-color: white;
+  background-image: url(./task_button.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.select_input {
+  flex-grow: 2;
+  height: 3rem;
+  appearance: none;
+  font-size: 1.2rem;
+  color: #c13584;
+  outline: none;
+  padding: 0 0.5rem 0 1rem;
+  border: none;
+  font-family: 'Lato';
+  font-weight: bold;
+  background-image: url(./dropdown_button.svg);
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  background-origin: content-box;
+  background-position: right center;
+  box-shadow: none;
+}
+
+.task_item {
+  height: 3rem;
+  background: white;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.complete_checkbox {
+  width: 3rem;
+  height: 100%;
+  background-color: #55b025;
+  appearance: none;
+  background-image: url(./completed_checkbox.svg);
+  background-size: cover;
+  &:checked {
+    background-image: url(./uncompleted_checkbox.svg);
+  }
+}
+
+.delete_button {
+  width: 3rem;
+  height: 100%;
+  background-color: #fd1d1d;
+  background-image: url(./delete_button.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.item_header {
+  color: #c13584;
+  font-size: 2rem;
+  flex-grow: 1;
+}
