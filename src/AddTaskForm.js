@@ -1,44 +1,37 @@
 import React, { useState } from 'react';
+import store from './store';
+import addTodo from './actions/addTodo';
+import setFilter from './actions/setFilter';
 
-const AddTaskForm = ({ submitHandler }) => {
+const AddTaskForm = () => {
   const [input, setInput] = useState('');
 
-  function pushToStorage(task) {
-    localStorage.setItem(task.id, JSON.stringify(task));
-  }
-
-  function submitTask(e) {
+  function submitHandler(e) {
     e.preventDefault();
     if (!input) {
       return;
     }
 
-    let task = {};
+    store.dispatch(addTodo(input));
 
-    submitHandler((tasksList) => {
-      task = {
-        task: input,
-        completed: false,
-        id: tasksList.length,
-      };
-
-      return [...tasksList, task];
-    });
-
-    pushToStorage(task);
+    store.dispatch(setFilter('all'));
 
     setInput('');
   }
 
+  function changeHandler(e) {
+    setInput(e.target.value);
+  }
+
   return (
-    <form className='addtask_form' onSubmit={submitTask}>
+    <form className='addtask_form' onSubmit={(e) => submitHandler(e)}>
       <input
         type='text'
         className='form_input'
-        value={input}
         onChange={(e) => {
-          setInput(e.target.value);
+          changeHandler(e);
         }}
+        value={input}
       />
       <button className='submit_button'>
         <span className='sr-only'>Add task</span>

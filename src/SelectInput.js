@@ -1,11 +1,17 @@
 import React from 'react';
+import store from './store';
+import setFilter from './actions/setFilter';
 
-function SelectInput({ filter, filterHandler }) {
+function SelectInput() {
+  function changeHandler(e) {
+    store.dispatch(setFilter(e.target.value));
+  }
+
   return (
     <select
       className='select_input'
-      value={filter}
-      onChange={(e) => filterHandler(e.target.value)}
+      onChange={(e) => changeHandler(e)}
+      value={store.getState().filter}
     >
       <option value='all'>All</option>
       <option value='completed'>Completed</option>
